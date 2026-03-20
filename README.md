@@ -1,53 +1,27 @@
-limesharp-test
+# limesharp-test
 
 A project showcase with a portfolio-style UI: fixed hero, card grid, and a detail view with transitions (including a “flip” animation between list and detail). Data is loaded from a mocked API in development and preview.
 
-Tech stack
+## Tech stack
 
+- **Vue 3** (Composition API, `<script setup>`)
+- **Vite 8**
+- **JavaScript** (ES modules)
 
+## Features
 
+- Two-column layout (hero + content) with a responsive structure
+- Project grid with selection and a detail view
+- Vite middleware exposing `GET /api/projects` with sample JSON (same behavior under `vite preview`)
+- Static build ready for any static file host
 
+## Requirements
 
-Vue 3 (Composition API, <script setup>)
+- [Node.js](https://nodejs.org/) **18+** (LTS recommended)
 
+## Local setup
 
-
-Vite 8
-
-
-
-JavaScript (ES modules)
-
-Features
-
-
-
-
-
-Two-column layout (hero + content) with a responsive structure
-
-
-
-Project grid with selection and a detail view
-
-
-
-Vite middleware exposing GET /api/projects with sample JSON (same behavior under vite preview)
-
-
-
-Static build ready for any static file host
-
-Requirements
-
-
-
-
-
-Node.js 18+ (LTS recommended)
-
-Local setup
-
+```bash
 # Clone (replace with your repository URL)
 git clone <REPOSITORY_URL>
 cd limesharp-test
@@ -57,55 +31,21 @@ npm install
 
 # Dev server (hot reload)
 npm run dev
+```
 
-Open the URL printed in the terminal (by default this is usually http://localhost:5173).
+Open the URL printed in the terminal (by default this is usually **http://localhost:5173**).
 
-Scripts
+### Scripts
 
+| Script            | Description                                      |
+| ----------------- | ------------------------------------------------ |
+| `npm run dev`     | Start Vite in development mode                   |
+| `npm run build`   | Production build output to `dist/`               |
+| `npm run preview` | Serve `dist/` locally (useful to verify the build) |
 
+## Project structure (overview)
 
-
-
-
-
-Script
-
-
-
-Description
-
-
-
-
-
-npm run dev
-
-
-
-Start Vite in development mode
-
-
-
-
-
-npm run build
-
-
-
-Production build output to dist/
-
-
-
-
-
-npm run preview
-
-
-
-Serve dist/ locally (useful to verify the build)
-
-Project structure (overview)
-
+```
 limesharp-test/
 ├── src/
 │   ├── api/           # Fetch client for /api/projects
@@ -117,31 +57,20 @@ limesharp-test/
 │   └── main.js
 ├── vite.config.js     # Vue plugin + mock /api/projects middleware
 └── package.json
+```
 
-Mock API
+## Mock API
 
-In development and vite preview, GET /api/projects returns the list defined in src/data/projects.dto.js.
+In **development** and **`vite preview`**, `GET /api/projects` returns the list defined in `src/data/projects.dto.js`.
 
-Deployment
+## Deployment
 
+1. Run `npm run build`.
+2. Upload the contents of **`dist/`** to your provider (Netlify, Vercel, Cloudflare Pages, S3, etc.).
+3. If required by your host, configure SPA fallback so unknown routes serve `index.html`.
 
+> **Note:** The `/api/projects` endpoint is provided by the Vite dev/preview server only. For a purely static production deploy you will need a real backend, a proxy, or another way to supply data (e.g. bundling it into the build), depending on your approach.
 
+## License
 
-
-Run npm run build.
-
-
-
-Upload the contents of dist/ to your provider (Netlify, Vercel, Cloudflare Pages, S3, etc.).
-
-
-
-If required by your host, configure SPA fallback so unknown routes serve index.html.
-
-
-
-Note: The /api/projects endpoint is provided by the Vite dev/preview server only. For a purely static production deploy you will need a real backend, a proxy, or another way to supply data (e.g. bundling it into the build), depending on your approach.
-
-License
-
-Private — see package.json ("private": true).
+Private — see `package.json` (`"private": true`).
